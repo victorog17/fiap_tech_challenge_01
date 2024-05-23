@@ -59,20 +59,10 @@ for pre, fill, node in RenderTree(raiz):
     lista_link.append(node.name)
     print("%s%s" % (pre, node.name))
 
-print('-'*50)
-print(lista_link)
-print('-'*50)
-for i in lista_link:
-    print(i)
-print('-'*50)
-#lista_link.pop(0)
+# Retirando o link base, pagina 1 e pagina 7, pois não contém aquivos para serem baixados
 new_lista_link = lista_link[2: -1]
-print(new_lista_link)
-print('-'*50)
-print(type(new_lista_link))
-for i in new_lista_link:
-    print(i)
 
+# Salvando em json a lista de links que serão usados para extrair os csv's
 with open("lista_urls.json", mode="w", encoding="utf-8") as events_file:
         json.dump(new_lista_link, events_file, ensure_ascii=False)
 
