@@ -3,18 +3,18 @@ import requests as _requests
 import bs4 as _bs4
 import urllib.request as urlilb
 import re
+import json
 
 url_base = 'http://vitibrasil.cnpuv.embrapa.br/'
-url = 'http://vitibrasil.cnpuv.embrapa.br/?opcao=opt_04'
+#url = 'http://vitibrasil.cnpuv.embrapa.br/?opcao=opt_04'
 
-variavel_paginas = ['?opcao=opt_02', '?opcao=opt_03', '?opcao=opt_04', '?opcao=opt_05', '?opcao=opt_06']
+#variavel_paginas = ['?opcao=opt_02', '?opcao=opt_03', '?opcao=opt_04', '?opcao=opt_05', '?opcao=opt_06']
 
 def encontrar_arquivos_todas_paginas():
     pass
 
 
 def encontrar_arquivos_tabelas_por_pagina(url, url_base):
-
     response = _requests.get(url)
     soup = _bs4.BeautifulSoup(response.content, "html.parser")
 
@@ -30,9 +30,17 @@ def encontrar_arquivos_tabelas_por_pagina(url, url_base):
                 print(url_dowload)
     return urls[0]
 
+# abre o arquivo json criado no script listaURLs.py
+with open("lista_urls.json", encoding="utf-8") as events_file:
+        lista_paginas = json.load(events_file)
+
+print(lista_paginas)
+
+# Faz a coleta e baixa o conteudo csv dos links existentes no arquivo json lido
 lista_downloads = []
-for j in variavel_paginas:
-    url_pagina = url_base + j
+for j in lista_paginas:
+    #url_pagina = url_base + j
+    url_pagina = j
     print(url_pagina)
     teste_funcao = encontrar_arquivos_tabelas_por_pagina(url_pagina, url_base)
     lista_downloads.append(teste_funcao)

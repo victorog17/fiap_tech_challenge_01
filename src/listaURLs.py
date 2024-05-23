@@ -1,4 +1,5 @@
 from anytree import Node, RenderTree
+import json
 
 #udo = Node("Udo")
 #marc = Node("Marc", parent=udo)
@@ -53,10 +54,17 @@ for i in soup.find_all("button"):
             
         
 
-
+lista_link = []
 for pre, fill, node in RenderTree(raiz):
+    lista_link.append(node.name)
     print("%s%s" % (pre, node.name))
 
+# Retirando o link base, pagina 1 e pagina 7, pois não contém aquivos para serem baixados
+new_lista_link = lista_link[2: -1]
+
+# Salvando em json a lista de links que serão usados para extrair os csv's
+with open("lista_urls.json", mode="w", encoding="utf-8") as events_file:
+        json.dump(new_lista_link, events_file, ensure_ascii=False)
 
 #for i in soup.find_all(class_="footer_content", href=True):
 #    href = i['href']
