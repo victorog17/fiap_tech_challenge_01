@@ -1,57 +1,56 @@
-from typing import Union, Dict
+from typing import Dict
 from fastapi import FastAPI, HTTPException
 from fastapi.encoders import jsonable_encoder
-import pandas as pd
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel
-import json as _json
+import json
 
 app = FastAPI()
 
-with open("Producao.json", encoding="utf-8") as events_file:
-        Producao = _json.load(events_file)
+with open("../src/json/Producao.json", encoding="utf-8") as events_file:
+        Producao = json.load(events_file)
 
-with open("Comercio.json", encoding="utf-8") as events_file:
-        Comercio = _json.load(events_file)
+with open("../src/json/Comercio.json", encoding="utf-8") as events_file:
+        Comercio = json.load(events_file)
 
-with open("ProcessaViniferas.json", encoding="utf-8") as events_file:
-        ProcessaViniferas = _json.load(events_file)
+with open("../src/json/ProcessaViniferas.json", encoding="utf-8") as events_file:
+        ProcessaViniferas = json.load(events_file)
 
-with open("ProcessaAmericanas.json", encoding="utf-8") as events_file:
-        ProcessaAmericanas = _json.load(events_file)
+with open("../src/json/ProcessaAmericanas.json", encoding="utf-8") as events_file:
+        ProcessaAmericanas = json.load(events_file)
 
-with open("ProcessaMesa.json", encoding="utf-8") as events_file:
-        ProcessaMesa = _json.load(events_file)
+with open("../src/json/ProcessaMesa.json", encoding="utf-8") as events_file:
+        ProcessaMesa = json.load(events_file)
 
-with open("ProcessaSemclass.json", encoding="utf-8") as events_file:
-        ProcessaSemclass = _json.load(events_file)
+with open("../src/json/ProcessaSemclass.json", encoding="utf-8") as events_file:
+        ProcessaSemclass = json.load(events_file)
 
-with open("ImpVinhos.json", encoding="utf-8") as events_file:
-        ImpVinhos = _json.load(events_file)
+with open("../src/json/ImpVinhos.json", encoding="utf-8") as events_file:
+        ImpVinhos = json.load(events_file)
 
-with open("ImpEspumantes.json", encoding="utf-8") as events_file:
-        ImpEspumantes = _json.load(events_file)
+with open("../src/json/ImpEspumantes.json", encoding="utf-8") as events_file:
+        ImpEspumantes = json.load(events_file)
 
-with open("ImpFrescas.json", encoding="utf-8") as events_file:
-        ImpFrescas = _json.load(events_file)
+with open("../src/json/ImpFrescas.json", encoding="utf-8") as events_file:
+        ImpFrescas = json.load(events_file)
 
-with open("ImpPassas.json", encoding="utf-8") as events_file:
-        ImpPassas = _json.load(events_file)
+with open("../src/json/ImpPassas.json", encoding="utf-8") as events_file:
+        ImpPassas = json.load(events_file)
 
-with open("ImpSuco.json", encoding="utf-8") as events_file:
-        ImpSuco = _json.load(events_file)
+with open("../src/json/ImpSuco.json", encoding="utf-8") as events_file:
+        ImpSuco = json.load(events_file)
 
-with open("ExpVinho.json", encoding="utf-8") as events_file:
-        ExpVinho = _json.load(events_file)
+with open("../src/json/ExpVinho.json", encoding="utf-8") as events_file:
+        ExpVinho = json.load(events_file)
 
-with open("ExpEspumantes.json", encoding="utf-8") as events_file:
-        ExpEspumantes = _json.load(events_file)
+with open("../src/json/ExpEspumantes.json", encoding="utf-8") as events_file:
+        ExpEspumantes = json.load(events_file)
 
-with open("ExpUva.json", encoding="utf-8") as events_file:
-        ExpUva = _json.load(events_file)
+with open("../src/json/ExpUva.json", encoding="utf-8") as events_file:
+        ExpUva = json.load(events_file)
 
-with open("ExpSuco.json", encoding="utf-8") as events_file:
-        ExpSuco = _json.load(events_file)
+with open("../src/json/ExpSuco.json", encoding="utf-8") as events_file:
+        ExpSuco = json.load(events_file)
 
 lista_tab = [Producao, Comercio, ProcessaViniferas, ProcessaAmericanas, ProcessaMesa, ProcessaSemclass, ImpVinhos
              , ImpEspumantes, ImpFrescas, ImpPassas, ImpSuco, ExpVinho, ExpEspumantes, ExpUva, ExpSuco]
@@ -116,11 +115,3 @@ def get_exportacao(subcategoria: str) -> Dict:
         else:
                 raise HTTPException(status_code=500, detail="This is not a option")
         return data
-
-
-
-#@app.get("/items/{item_id}")
-#def read_item(item_id: int, q: Union[str, None] = None):
-#    return {"item_id": item_id, "q": q}
-
-

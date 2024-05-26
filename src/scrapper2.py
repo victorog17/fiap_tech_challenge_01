@@ -1,22 +1,14 @@
-from typing import List
-import requests as _requests
-import bs4 as _bs4
+import requests as requests
+import bs4 as bs4
 import urllib.request as urlilb
 import re
 import json
 
 url_base = 'http://vitibrasil.cnpuv.embrapa.br/'
-#url = 'http://vitibrasil.cnpuv.embrapa.br/?opcao=opt_04'
-
-#variavel_paginas = ['?opcao=opt_02', '?opcao=opt_03', '?opcao=opt_04', '?opcao=opt_05', '?opcao=opt_06']
-
-def encontrar_arquivos_todas_paginas():
-    pass
-
 
 def encontrar_arquivos_tabelas_por_pagina(url, url_base):
-    response = _requests.get(url)
-    soup = _bs4.BeautifulSoup(response.content, "html.parser")
+    response = requests.get(url)
+    soup = bs4.BeautifulSoup(response.content, "html.parser")
 
     urls = []
     for i in soup.find_all(class_="footer_content", href=True):
@@ -39,28 +31,12 @@ print(lista_paginas)
 # Faz a coleta e baixa o conteudo csv dos links existentes no arquivo json lido
 lista_downloads = []
 for j in lista_paginas:
-    #url_pagina = url_base + j
     url_pagina = j
-    print(url_pagina)
     teste_funcao = encontrar_arquivos_tabelas_por_pagina(url_pagina, url_base)
     lista_downloads.append(teste_funcao)
-    print(teste_funcao)    
-
-print('-'*50)
-print(lista_downloads)
-print('-'*50)
 
 for i in lista_downloads:
     match = re.search(r'/(\w+)\.csv$', i)
     print(match)
     nome = match.group(1)
-    urlilb.urlretrieve(i, f'{nome}.csv')
-
-#teste_funcao = encontrar_arquivos_tabelas_por_pagina(url, url_base)
-#print(teste_funcao)
-#
-#for i in teste_funcao:
-#    match = re.search(r'/(\w+)\.csv$', i)
-#    print(match)
-#    nome = match.group(1)
-#    urlilb.urlretrieve(i, f'{nome}.csv')
+    urlilb.urlretrieve(i, f'../src/csv/{nome}.csv')
