@@ -20,3 +20,5 @@ Referencia Tabelas
   - Subcategoria Espumantes: ExpEspumantes.csv
   - Subcategoria Uvas frescas: ExpUva.csv
   - Subcategoria Suco de uva: ExpSuco.csv
+
+  ![alt text](plano_arquitetura.jpeg)
