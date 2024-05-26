@@ -1,5 +1,5 @@
 from typing import Union, Dict
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from fastapi.encoders import jsonable_encoder
 import pandas as pd
 from fastapi.responses import JSONResponse
@@ -58,36 +58,64 @@ lista_tab = [Producao, Comercio, ProcessaViniferas, ProcessaAmericanas, Processa
 
 
 @app.get("/")
-def read_root():
-    tabela=pd.read_csv("Producao.csv")
-    #print(tabela.head())
-    json_compatible_item_data = jsonable_encoder(tabela)
-    return JSONResponse(content=lista_tab)
+def root():
+    return {"message": "welcome to this cool historical events api"}
+
+@app.get("/all_tables")
+def all_tables():
+    return lista_tab
 
 @app.get("/producao")
-def get_producao(ano: str) -> Dict:
-    data = Producao[ano]
-    return data
+def get_producao() -> Dict:
+        return Producao
 
 @app.get("/comercio")
-def get_comercio(ano: str) -> Dict:
-    data = Comercio[ano]
-    return data
+def get_comercio() -> Dict:
+        return Comercio
 
-#@app.get("/processamento", description="Escolha 1: Viníferas, 2: Americanas e híbridas, 3: Uvas de mesa, 4: Sem classificação")
-#def get_processamento(subcategoria: str, ano: str) -> Dict:
-#    try:
-#        if subcategoria == "1":
-#            data = ProcessaViniferas[ano]
-#        elif subcategoria == "2":
-#            data = ProcessaAmericanas[ano]
-#        elif subcategoria == "3":
-#            data = ProcessaMesa[ano]
-#        elif subcategoria == "4":
-#            data = ProcessaSemclass[ano]
-#        return data
-#    except Exception:
-#        return "This is not a option"
+@app.get("/processamento", description="Escolha 1: Viníferas, 2: Americanas e híbridas, 3: Uvas de mesa, 4: Sem classificação")
+def get_processamento(subcategoria: str) -> Dict:
+        if subcategoria == "1":
+                data = ProcessaViniferas
+        elif subcategoria == "2":
+                data = ProcessaAmericanas
+        elif subcategoria == "3":
+                data = ProcessaMesa
+        elif subcategoria == "4":
+                data = ProcessaSemclass
+        else:
+                raise HTTPException(status_code=500, detail="This is not a option")
+        return data
+
+@app.get("/importacao", description="Escolha 1: Vinhos de mesa, 2: Espumantes, 3: Uvas frescas, 4: Uvas passas, 5: Suco de uva")
+def get_importacao(subcategoria: str) -> Dict:
+        if subcategoria == "1":
+                data = ImpVinhos
+        elif subcategoria == "2":
+                data = ImpEspumantes
+        elif subcategoria == "3":
+                data = ImpFrescas
+        elif subcategoria == "4":
+                data = ImpPassas
+        elif subcategoria == "5":
+                data = ImpSuco
+        else:
+                raise HTTPException(status_code=500, detail="This is not a option")
+        return data
+
+@app.get("/exportacao", description="Escolha 1: Vinhos de mesa, 2: Espumantes, 3: Uvas frescas, 4: Suco de uva")
+def get_exportacao(subcategoria: str) -> Dict:
+        if subcategoria == "1":
+                data = ExpVinho
+        elif subcategoria == "2":
+                data = ExpEspumantes
+        elif subcategoria == "3":
+                data = ExpUva
+        elif subcategoria == "4":
+                data = ExpSuco
+        else:
+                raise HTTPException(status_code=500, detail="This is not a option")
+        return data
 
 
 
