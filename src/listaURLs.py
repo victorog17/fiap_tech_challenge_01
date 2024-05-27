@@ -1,36 +1,9 @@
 from anytree import Node, RenderTree
 import json
-
-#udo = Node("Udo")
-#marc = Node("Marc", parent=udo)
-#lian = Node("Lian", parent=marc)
-#dan = Node("Dan", parent=udo)
-#jet = Node("Jet", parent=dan)
-#jan = Node("Jan", parent=dan)
-#joe = Node("Joe", parent=dan)
-
-#print(udo)
-#Node('/Udo')
-#print(joe)
-#Node('/Udo/Dan/Joe')
-
-#for pre, fill, node in RenderTree(udo):
-#    print("%s%s" % (pre, node.name))
-
-#print(dan.children)
-
-from typing import List
 import requests as _requests
 import bs4 as _bs4
-import urllib.request as urlilb
-import re
-
-
 
 url_base = 'http://vitibrasil.cnpuv.embrapa.br/index.php'
-#url = 'http://vitibrasil.cnpuv.embrapa.br/index.php?opcao=opt_02'
-url = 'http://vitibrasil.cnpuv.embrapa.br/?opcao=opt_02'
-
 
 raiz = Node(url_base)
 response = _requests.get(url_base)
@@ -53,7 +26,6 @@ for i in soup.find_all("button"):
                 print("Botao sem nome!")
             
         
-
 lista_link = []
 for pre, fill, node in RenderTree(raiz):
     lista_link.append(node.name)
@@ -65,20 +37,3 @@ new_lista_link = lista_link[2: -1]
 # Salvando em json a lista de links que serão usados para extrair os csv's
 with open("lista_urls.json", mode="w", encoding="utf-8") as events_file:
         json.dump(new_lista_link, events_file, ensure_ascii=False)
-
-#for i in soup.find_all(class_="footer_content", href=True):
-#    href = i['href']
-#    if href.endswith('.csv'):
-#        if href.startswith('http'):
-#            print(href)
-#        else:
-#            teste = url_base + href
-#            urls.append(teste)
-#            print(teste)
-
-
-#print(urls[0])
-#match = re.search(r'/(\w+)\.csv$', urls[0])
-#print(match)
-#nome = match.group(1)
-#urlilb.urlretrieve(urls[0], f'{nome}.csv')
