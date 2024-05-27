@@ -10,7 +10,7 @@ O objetivo da API é exibir os dados da categoria desejada.
 
 Os arquivos do projeto estão estruturados da seguinte forma:
 
-- testeAPI.py: Arquivo principal que lê arquivos JSON e roda a API.
+- main.py: Arquivo principal que lê arquivos JSON e roda a API.
 - listaURLs.py: Arquivo com o objetivo de extrair os links que contém os dados em CSV das categorias do site da Embrapa.
 - scrapper.py: Arquivo que baixa o conteúdo CSV dos links gerados em listaURLs.py e salva na pasta src/csv para organização.
 - tabelas.py: Arquivo destinado a ler os arquivos CSV baixados e salva-los em JSON na pasta src/json para melhor leitura dos dados na API.
@@ -57,7 +57,7 @@ python tabelas.py
 
 5. Execução da API:
 ```
-uvicorn testeAPI:app --reload
+uvicorn main:app --reload
 ```
 
 ### Referencia Estrutura de Categorias
