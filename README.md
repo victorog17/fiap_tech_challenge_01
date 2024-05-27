@@ -60,26 +60,26 @@ python tabelas.py
 uvicorn testeAPI:app --reload
 ```
 
-### Referencia Tabelas
+### Referencia Estrutura de Categorias
 
-- Categoria Produção: Producao.csv
-- Categoria Processamento:
-  - Subcategoria Viníferas: ProcessaViniferas.csv
-  - Subcategoria Americanas e híbridas: ProcessaAmericanas.csv
-  - Subcategoria Uvas de mesa: ProcessaMesa.csv
-  - Subcategoria Sem classificação: ProcessaSemclass.csv
-- Categoria Comercialização: Comercio.csv
-- Categoria Importação:
-  - Subcategoria Vinhos de mesa: ImpVinhos.csv
-  - Subcategoria Espumantes: ImpEspumantes.csv
-  - Subcategoria Uvas frescas: ImpFrescas.csv
-  - Subcategoria Uvas passas: ImpPassas.csv
-  - Subcategoria Suco de uva: ImpSuco.csv
-- Categoria Exportação:
-  - Subcategoria Vinhos de mesa: ExpVinho.csv
-  - Subcategoria Espumantes: ExpEspumantes.csv
-  - Subcategoria Uvas frescas: ExpUva.csv
-  - Subcategoria Suco de uva: ExpSuco.csv
+- Categoria Produção
+- Categoria Processamento
+  - Subcategoria Viníferas
+  - Subcategoria Americanas e híbridas
+  - Subcategoria Uvas de mesa
+  - Subcategoria Sem classificação
+- Categoria Comercialização
+- Categoria Importação
+  - Subcategoria Vinhos de mesa
+  - Subcategoria Espumantes
+  - Subcategoria Uvas frescas
+  - Subcategoria Uvas passas
+  - Subcategoria Suco de uva
+- Categoria Exportação
+  - Subcategoria Vinhos de mesa
+  - Subcategoria Espumantes
+  - Subcategoria Uvas frescas
+  - Subcategoria Suco de uva
 
 ### Proposta de Arquitetura
   ![alt text](plano_arquitetura.jpeg)
