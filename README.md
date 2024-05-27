@@ -6,7 +6,7 @@ Está API foi desenvolvida para retornar os dados sobre vitivicultura disponivei
 A API fornece acesso as categorias de produção, processamento, comercialização, importação e exportação de uvas, vinhos e derivados.
 O objetivo da API é exibir os dados da categoria desejada.
 
-### Projeto
+### Estrutura de arquivos do Projeto
 
 Os arquivos do projeto estão estruturados da seguinte forma:
 
