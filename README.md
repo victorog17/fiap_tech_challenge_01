@@ -15,6 +15,8 @@ Os arquivos do projeto estão estruturados da seguinte forma:
 - scrapper.py: Arquivo que baixa o conteúdo CSV dos links gerados em listaURLs.py e salva na pasta src/csv para organização.
 - tabelas.py: Arquivo destinado a ler os arquivos CSV baixados e salva-los em JSON na pasta src/json para melhor leitura dos dados na API.
 - lista_urls.json: Arquivo gerado por listaURLs.py com todos os links das categorias que contém arquivos csv.
+- csv/: Diretório contendo arquivos csv extraídos pelo scrapper.py
+- json/: Diretório contendo arquivos json convertidos pelo tabelas.py
 
 O projeto da API retoma os dados do site da Embrapa sobre Vitivinicultura. O web scraping baixa os arquivos csv que alimentam as tabelas no site, onde são convertidos posteriormente para json e finalmente lidos internamente pela API. Foi criado um filtro apenas para as categorias que tem subcategorias, indicando qual opção retorna cada tabela, tendo um tratamento simples de erro 500, caso a opção digitada não seja uma das disponiveis. Todos os comandos GET retomam todos os dados da categoria selecionada.
 
