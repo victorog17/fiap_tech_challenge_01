@@ -30,6 +30,34 @@ O projeto da API retoma os dados do site da Embrapa sobre Vitivinicultura. O web
 - Re
 - Pandas
 
+### Passo a passo
+
+1. Clone o repositório:
+```
+https://github.com/victorog17/fiap_tech_challenge_01.git
+cd repositorio
+```
+
+2. Crie um ambiente virtual:
+```
+python -m venv venv
+venv\Scripts\activate  # No Windows 
+
+3. Instação das dependências:
+```
+pip install -r requirements.txt
+```
+4. Execução de scripts:
+```
+python listaURLs.py
+python scrapper.py
+python tabelas.py
+```
+
+5. Execução da API:
+```
+uvicorn testeAPI:app --reload
+```
 
 ### Referencia Tabelas
 
