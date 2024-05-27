@@ -8,7 +8,15 @@ O objetivo da API é exibir os dados da categoria desejada.
 
 ### Projeto
 
-Referencia Tabelas
+Os arquivos do projeto estão estruturados da seguinte forma:
+
+- testeAPI.py: Arquivo principal que lê arquivos JSON e roda a API.
+- listaURLs.py: Arquivo com o objetivo de extrair os links que contém os dados em CSV das categorias do site da Embrapa.
+- scrapper.py: Arquivo que baixa o conteúdo CSV dos links gerados em listaURLs.py e salva na pasta src/csv para organização.
+- tabelas.py: Arquivo destinado a ler os arquivos CSV baixados e salva-los em JSON na pasta src/json para melhor leitura dos dados na API.
+- lista_urls.json: Arquivo gerado por listaURLs.py com todos os links das categorias que contém arquivos csv.
+
+### Referencia Tabelas
 
 - Categoria Produção: Producao.csv
 - Categoria Processamento:
