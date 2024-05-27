@@ -1,4 +1,12 @@
 # Fiap Tech Challenge 01
+## API Banco de dados de uva, vinho e derivados
+
+### Descrição
+Está API foi desenvolvida para retornar os dados sobre vitivicultura disponiveis no site da [Embrapa](http://vitibrasil.cnpuv.embrapa.br/).
+A API fornece acesso as categorias de produção, processamento, comercialização, importação e exportação de uvas, vinhos e derivados.
+O objetivo da API é exibir os dados da categoria desejada.
+
+### Projeto
 
 Referencia Tabelas
 
