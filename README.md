@@ -42,6 +42,7 @@ cd repositorio
 ```
 python -m venv venv
 venv\Scripts\activate  # No Windows 
+```
 
 3. Instação das dependências:
 ```
