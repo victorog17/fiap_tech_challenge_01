@@ -49,8 +49,14 @@ venv\Scripts\activate  # No Windows
 3. Instação das dependências:
 ```
 pip install -r requirements.txt
+
 ```
-4. Execução de scripts:
+4. Entrar diretório /src
+```
+cd src
+```
+
+4. Ordem de execução dos scripts:
 ```
 python listaURLs.py
 python scrapper.py
