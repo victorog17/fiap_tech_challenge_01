@@ -56,14 +56,14 @@ pip install -r requirements.txt
 cd src
 ```
 
-4. Ordem de execução dos scripts:
+5. Ordem de execução dos scripts:
 ```
 python listaURLs.py
 python scrapper.py
 python tabelas.py
 ```
 
-5. Execução da API:
+6. Execução da API:
 ```
 uvicorn main:app --reload
 ```
