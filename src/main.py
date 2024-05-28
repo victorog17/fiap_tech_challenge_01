@@ -58,7 +58,7 @@ lista_tab = [Producao, Comercio, ProcessaViniferas, ProcessaAmericanas, Processa
 
 @app.get("/")
 def root():
-    return {"message": "welcome to this cool historical events api"}
+    return {"message": "Digite '/docs' no final da barra de endereço para ver a documentação da API"}
 
 @app.get("/all_tables")
 def all_tables():
